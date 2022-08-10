@@ -14,7 +14,7 @@ async function renderDragon(q, n, ctx, last, skip) {
     const center = new Pt(canvas.width / 2, canvas.height / 2);
     const scale = Math.min(canvas.width / bounds.x.width, canvas.height / bounds.y.width) * 0.8;
     const transPoint = (pt) => pt.plus(midpt).scale(scale).plus(center);
-    const step = Math.ceil(dragon.length / ((1 + n) * (1 + n)));
+    const step = Math.ceil(0.5 * dragon.length / ((1 + n) * (1 + n)));
     for (let i = 0; i < dragon.length; i++) {
         if (!skip[0] && i % step == 0)
             await rfa();
@@ -104,6 +104,6 @@ function hookDragon(canvas) {
     redraw();
     setTimeout(() => canvas.focus());
 }
-document.addEventListener("DOMContentLoaded", () => {
-    hookDragon(document.querySelector("canvas#dragon"));
+window.addEventListener("load", () => {
+    setTimeout(() => hookDragon(document.querySelector("canvas#dragon")));
 });
