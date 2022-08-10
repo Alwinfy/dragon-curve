@@ -32,10 +32,12 @@ async function renderDragon(q: number, n: number, ctx: CanvasRenderingContext2D,
 
 
 function hookDragon(canvas: HTMLCanvasElement) {
-	const style = getComputedStyle(canvas);
 	const parse = (s: string) => +s.replace("px", "");
-	const scale = Math.min(parse(style.width), parse(style.height));
-	canvas.width = canvas.height = scale;
+	requestAnimationFrame(() => {
+		const style = getComputedStyle(canvas);
+		const scale = Math.min(parse(style.width), parse(style.height));
+		canvas.width = canvas.height = scale;
+	});
 	const ctx = canvas.getContext("2d")!;
 	let level = 3;
 	let q = 60;
