@@ -1,15 +1,32 @@
 <!DOCtype html>
 <html>
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Alwinfy" />
+    <meta name="description" content="Deez." />
     <script src="dragon.js"></script>
     <script src="bounds.js"></script>
     <script src="swipe.js"></script>
     <script src="draw.js"></script>
+    <title>Here be Dragons</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap-theme.min.css" crossorigin="anonymous" />
+    <style>
+    body { background-color: #eee; }
+
+    main {
+      text-align: center;
+      background-color: white;
+      min-height: 100vh;
+      padding-top: 3em;
+    }
+    </style>
   </head>
   <body>
-    <center>
-      <p><b>Controls:</b> Swipe/arrow keys <kbd>Left</kbd>/<kbd>Right</kbd> to scale dragon up or down; <kbd>Up</kbd>/<kbd>Down</kbd> to change dragon curve angle; <kbd>Space</kbd> or tap to toggle drawing visualization</p>
-      <canvas id="dragon" width=600 height=600 tabindex=1></canvas>
-    </center>
+    <main class=container>
+      <p><b>Controls:</b> Swipe/arrow keys <kbd>Left</kbd>/<kbd>Right</kbd> to scale dragon up or down; <kbd>Up</kbd>/<kbd>Down</kbd> to change dragon curve angle; tap or <kbd>Space</kbd> to toggle drawing visualization</p>
+      <canvas id="dragon" width=600 height=600 style="max-width: 100%;" tabindex=1></canvas>
+      <hr />
+    </main>
   </body>
 </html>
