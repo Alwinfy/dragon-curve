@@ -31,6 +31,10 @@ async function renderDragon(q: number, n: number, ctx: CanvasRenderingContext2D,
 
 
 function hookDragon(canvas: HTMLCanvasElement) {
+	const style = getComputedStyle(canvas);
+	const parse = (s: string) => +s.replace("px", "");
+	const scale = Math.min(parse(style.width), parse(style.height));
+	canvas.width = canvas.height = scale;
 	const ctx = canvas.getContext("2d")!;
 	let level = 3;
 	let q = 60;
@@ -61,11 +65,13 @@ function hookDragon(canvas: HTMLCanvasElement) {
 		if (jump) redraw();
 	};
 	hookSwipes(canvas);
+	hookScroll(canvas);
 	canvas.addEventListener("swipe", (ev: Event) => {
 		swipe((ev as CustomEvent<Direction>).detail);
 		redraw();
 	});
 	canvas.addEventListener("tap", tap);
+	canvas.addEventListener("click", tap);
 	canvas.addEventListener("keydown", ev => {
 		if (ev.repeat) return;
 		switch (ev.code) {
