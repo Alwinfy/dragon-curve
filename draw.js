@@ -40,22 +40,27 @@ function hookDragon(canvas) {
         requestAnimationFrame(() => renderDragon(q, level, ctx, last, skip));
     };
     const swipe = (word) => {
+        var level_ = level, q_ = q;
         switch (word) {
             case "left":
-                level = Math.max(level - 1, 0);
+                level_ = Math.max(level - 1, 0);
                 break;
             case "right":
-                level = Math.min(level + 1, 16);
+                level_ = Math.min(level + 1, 16);
                 break;
             case "up":
-                q = Math.max(q - 1, 0);
+                q_ = Math.max(q - 1, 0);
                 break;
             case "down":
-                q = Math.min(q + 1, 120);
+                q_ = Math.min(q + 1, 120);
                 break;
         }
         ;
-        redraw();
+        if (level_ != level || q_ != q) {
+            level = level_;
+            q = q_;
+            redraw();
+        }
     };
     const tap = () => {
         const jump = skip[0];
